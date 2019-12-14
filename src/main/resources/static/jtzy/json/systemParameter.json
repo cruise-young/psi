@@ -1,0 +1,14 @@
+{
+	"cmsName": "psi",
+	"version": "0.1",
+	"author": "CuriseYoung",
+	"homePage": "index.html",
+	"server": "windows",
+	"dataBase": "8.00.2039",
+	"maxUpload": "2M",
+	"userRights": "超级管理员",
+	"description": "基于SpringBoot+LayUI进销存管理系统",
+	"powerby": "copyright @2020 CuriseYoung",
+	"record": "京ISO备00829号-1",
+	"keywords": ""
+}
