@@ -18,7 +18,7 @@ layui.use(['form','layer','jquery'],function(){
             //设置登录按钮 恢复可点击   在前端防止 重复点击
             btn.text("登录").attr("disabled",false).removeClass("layui-disabled");
             layer.msg(rs.msg);
-            if(rs.code != 200){
+            if(rs.code !== 200){
                 layer.msg(rs.msg);
             }else{
                 //跳转到templates/system/index/index.html页面
