@@ -1,5 +1,7 @@
 package com.hy.psicrm.sys.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("sys")
 public class SystemController {
-	
+	private final Logger logger = LoggerFactory.getLogger(SystemController.class);
 	/**
 	 * 跳转到登陆页面
 	 */
@@ -22,6 +24,7 @@ public class SystemController {
 		// jtzy下所有文件和url访问都会放行 ？ todo 即可通过这种方式来进入template下页面？
 		// shiroFilterFactoryBean.setLoginUrl("/sys/toLogin.do");
 		// 拦截template下配置的请求，上一行的路径要写对！
+		logger.info("跳转到登陆页面");
 		return "login";
 	}
 	
