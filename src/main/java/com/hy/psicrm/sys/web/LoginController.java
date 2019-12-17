@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author CruiseYoung
  * @date
@@ -25,7 +27,7 @@ public class LoginController {
 	private final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@RequestMapping("login")
-	public ResultObj login(String userName, String password) {
+	public ResultObj login(String userName, String password, HttpServletRequest req) {
 		Subject subject = SecurityUtils.getSubject();
 //		AuthenticationToken token=new UsernamePasswordToken(userName, password);
 		UsernamePasswordToken token=new UsernamePasswordToken(userName, CryptographyUtil.md5(password, "java"));
@@ -34,7 +36,7 @@ public class LoginController {
 			subject.login(token);
 			UserInfos userInfos=(UserInfos) subject.getPrincipal();
 			logger.info("userInfos:{}", userInfos);
-			//WebUtils.getSession().setAttribute("user", userInfos.getUser());
+			req.getSession().setAttribute("user", userInfos.getUser());
 			return ResultObj.LOGIN_SUCCESS;
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
