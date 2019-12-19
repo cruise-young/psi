@@ -11,11 +11,8 @@ class PsicrmApplicationTests {
 	}
 
 	@Test
+	// 变态跳台阶
 	public int f(int n) {
-		if (n == 0 || n == 1){
-			return 1;
-		} else {
-			return 2*f(n-1);
-		}
+		return 1 << (n-1);
 	}
 }
