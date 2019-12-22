@@ -34,17 +34,21 @@ public class User implements Serializable {
 
     private String password;
 
+    private Integer sex;
+    /**
+     * md5j加密盐 （shiro）
+     */
     private String salt;
 
-    private String remark;
-
-    private Integer sex;
-
+    /**
+     * 用户类型
+     */
     private Integer type;
 
     private Date updateTime;
 
     private Date createTime;
 
+    private String remark;
 
 }
