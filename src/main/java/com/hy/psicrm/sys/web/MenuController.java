@@ -2,8 +2,10 @@ package com.hy.psicrm.sys.web;
 
 import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hy.psicrm.sys.common.Constast;
-import com.hy.psicrm.sys.common.DataGridView;
+import com.hy.psicrm.common.Constast;
+import com.hy.psicrm.common.DataGridView;
+import com.hy.psicrm.sys.entity.MenuTreeNode;
+import com.hy.psicrm.sys.entity.MenuTreeNodeBuilder;
 import com.hy.psicrm.sys.entity.Permission;
 import com.hy.psicrm.sys.entity.User;
 import com.hy.psicrm.sys.service.IPermissionService;
@@ -27,8 +29,7 @@ public class MenuController {
 	private IPermissionService permissionService;
 
 	@RequestMapping("loadIndexLeftMenuJson")
-	public JSONObject loadIndexLeftMenuJson(PermissionVo permissionVo) {
-		JSONObject result = new JSONObject();
+	public DataGridView loadIndexLeftMenuJson(PermissionVo permissionVo) {
 		//查询所有菜单
 		QueryWrapper<Permission> queryWrapper=new QueryWrapper<>();
 		//设置只能查询菜单
@@ -43,13 +44,20 @@ public class MenuController {
 			//根据用户ID+角色+权限去查询
 			list = permissionService.list(queryWrapper);
 		}
-		// return new DataGridView(list);
 
-		result.put("code","0");
-		result.put("data",list);
-		result.put("msg","");
-		result.put("count",list.size());
-		return result;
+		ArrayList<MenuTreeNode> menus = new ArrayList<>();
+		for (Permission p : list) {
+			Integer id=p.getId();
+			Integer pid=p.getPid();
+			String title=p.getTitle();
+			String icon=p.getIcon();
+			String href=p.getHref();
+			Boolean spread=true;
+			menus.add(new MenuTreeNode(id, pid, title, icon, href, spread));
+		}
+		//构造层级关系
+		List<MenuTreeNode> menuList = MenuTreeNodeBuilder.build(menus, 1);
+		return new DataGridView(menuList);
 	}
 
 }

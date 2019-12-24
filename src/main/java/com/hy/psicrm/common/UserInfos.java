@@ -1,4 +1,4 @@
-package com.hy.psicrm.sys.common;
+package com.hy.psicrm.common;
 
 import com.hy.psicrm.sys.entity.User;
 import lombok.Data;

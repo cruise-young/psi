@@ -1,7 +1,7 @@
 package com.hy.psicrm.sys.realm;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hy.psicrm.sys.common.UserInfos;
+import com.hy.psicrm.common.UserInfos;
 import com.hy.psicrm.sys.entity.User;
 import com.hy.psicrm.sys.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;

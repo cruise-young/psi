@@ -1,13 +1,11 @@
 package com.hy.psicrm.sys.web;
 
 
-import com.hy.psicrm.sys.common.ResultObj;
-import com.hy.psicrm.sys.common.UserInfos;
+import com.hy.psicrm.common.UserInfos;
 import com.hy.psicrm.sys.utils.CryptographyUtil;
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;

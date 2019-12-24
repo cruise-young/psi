@@ -1,4 +1,4 @@
-package com.hy.psicrm.sys.common;
+package com.hy.psicrm.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
