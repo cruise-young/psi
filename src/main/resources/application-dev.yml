@@ -1,0 +1,41 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /psi
+
+#配置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/psi?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+#配置thymeleaf
+  thymeleaf:
+    cache: false
+    enabled: true
+    mode: LEGACYHTML5
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+#配置mybatisplus
+mybatis-plus:
+  mapper-locations:
+    - classpath:mapper/*/*Mapper.xml
+  global-config:
+    db-config:
+      id-type: auto
+    banner: true
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
