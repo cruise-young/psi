@@ -42,7 +42,7 @@ public class MenuController {
 			list = permissionService.list(queryWrapper);
 		}else {
 			//根据用户ID+角色+权限去查询
-			list = permissionService.list(queryWrapper);
+			//list = permissionService.list(queryWrapper);
 		}
 
 		ArrayList<MenuTreeNode> menus = new ArrayList<>();
@@ -52,7 +52,7 @@ public class MenuController {
 			String title=p.getTitle();
 			String icon=p.getIcon();
 			String href=p.getHref();
-			Boolean spread=true;
+			Boolean spread=false;
 			menus.add(new MenuTreeNode(id, pid, title, icon, href, spread));
 		}
 		//构造层级关系

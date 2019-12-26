@@ -32,7 +32,7 @@ public class SystemController {
 		String userAgent = req.getHeader("User-Agent");
 		//判断是否ie
 		if(BrowserUtil.isMSBrowser(userAgent)){
-			mav.setViewName("errorBrowser");
+			mav.setViewName("system/errorBrowser");
 		}else{
 			logger.info("跳转到登陆页面");
 			mav.setViewName("login");
@@ -48,5 +48,13 @@ public class SystemController {
 		// template目录下index/index.html
 		return "index/index";
 	}
-	
+
+	/**
+	 * 跳转到工作台
+	 */
+	@RequestMapping("toMain.do")
+	public String main() {
+		return "index/main";
+	}
+
 }
