@@ -57,4 +57,12 @@ public class SystemController {
 		return "index/main";
 	}
 
+	/**
+	 * 跳转到工作台
+	 */
+	@RequestMapping("toNotice.do")
+	public String notice() {
+		return "system/announcement";
+	}
+
 }
