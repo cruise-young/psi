@@ -58,7 +58,15 @@ public class SystemController {
 	}
 
 	/**
-	 * 跳转到工作台
+	 * 跳转到公告
+	 */
+	@RequestMapping("toOperateInfo.do")
+	public String operateInfo() {
+		return "system/operateInfo";
+	}
+
+	/**
+	 * 跳转到公告
 	 */
 	@RequestMapping("toNotice.do")
 	public String notice() {

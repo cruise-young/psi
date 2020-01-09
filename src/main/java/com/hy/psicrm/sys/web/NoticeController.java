@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019-12-27
  */
 @RestController
-@RequestMapping("/sys/notice")
+@RequestMapping("/notice")
 public class NoticeController {
 	@Autowired
 	private INoticeService noticeService;
