@@ -58,7 +58,7 @@ public class SystemController {
 	}
 
 	/**
-	 * 跳转到公告
+	 * 跳转到登录信息
 	 */
 	@RequestMapping("toOperateInfo.do")
 	public String operateInfo() {
