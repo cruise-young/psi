@@ -1,6 +1,7 @@
 package com.hy.psicrm.sys.web;
 
 
+import com.hy.psicrm.common.ResultObj;
 import com.hy.psicrm.common.UserInfos;
 import com.hy.psicrm.sys.entity.OperateInfo;
 import com.hy.psicrm.sys.service.IOperateInfoService;
@@ -32,8 +33,7 @@ public class LoginController {
 	private IOperateInfoService operateInfoService;
 
 	@RequestMapping("login")
-	public JSONObject login(String userName, String password, HttpServletRequest req) {
-		JSONObject result = new JSONObject();
+	public ResultObj login(String userName, String password, HttpServletRequest req) {
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token=new UsernamePasswordToken(userName, CryptographyUtil.md5(password, "java"));
 		logger.info("token:{}", token);
@@ -42,8 +42,6 @@ public class LoginController {
 			UserInfos userInfos=(UserInfos) subject.getPrincipal();
 			logger.info("userInfos:{}", userInfos);
 			req.getSession().setAttribute("user", userInfos.getUser());
-			result.put("code", 200);
-			result.put("msg","登陆成功");
 
 			// 保存登录信息
 			OperateInfo operateInfo = new OperateInfo();
@@ -52,12 +50,10 @@ public class LoginController {
 			operateInfo.setLoginTime(new Date());
 			operateInfoService.save(operateInfo);
 
-			return result;
+			return ResultObj.登陆成功;
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
-			result.put("code", 500);
-			result.put("msg","登陆失败,用户名或密码不正确");
-			return result;
+			return ResultObj.登陆用户名或密码不正确;
 		}
 	}
 }

@@ -29,7 +29,7 @@ import java.util.Collection;
  * @since 2020-01-07
  */
 @RestController
-@RequestMapping("sys")
+@RequestMapping("operateInfo")
 public class OperateInfoController {
     @Autowired
     private IOperateInfoService operateInfoService;
